@@ -1,4 +1,5 @@
-const message = require('./msg')
+const messageNego = require('./msgNego');
+const messageOffer = require('./msgOffer');
 
 const TelegramBot = require('node-telegram-bot-api');
 
@@ -14,8 +15,9 @@ bot.on('message', async (msg) => {
     await bot.sendMessage(chatId, message.start, {
       reply_markup: {
         inline_keyboard: [
-          [{ text: 'Переговоры', callback_data: 'call' }],
-          [{ text: 'Поиск работы', callback_data: 'lfj' }]
+          [{text: 'Переговоры', callback_data:'call'}],
+          [{text: 'Поиск работы', callback_data:'lfj'}],
+          [{text: 'PDF', callback_data:'pdf'}]
         ]
       }
     })
@@ -26,7 +28,7 @@ bot.on('callback_query', async (query) => {
   const chatId = query.message.chat.id;
   switch (query.data) {
     case 'start': {
-      return await bot.sendMessage(chatId, message.start, {
+      return await bot.sendMessage( chatId, messageNego.start, {
         reply_markup: {
           inline_keyboard: [
             [{ text: 'Переговоры', callback_data: 'call' }],
@@ -35,8 +37,8 @@ bot.on('callback_query', async (query) => {
         }
       })
     }
-    case 'call': {
-      return await bot.sendMessage(chatId, message.call, {
+    case 'call' : {
+      return await bot.sendMessage( chatId, messageNego.call, {
         reply_markup: {
           inline_keyboard: [
             [{ text: 'Следующий щаг', callback_data: 'write' }],
@@ -46,7 +48,7 @@ bot.on('callback_query', async (query) => {
       })
     }
     case 'write': {
-      return await bot.sendMessage(chatId, message.write, {
+      return await bot.sendMessage( chatId, messageNego.write, {
         reply_markup: {
           inline_keyboard: [
             [{ text: 'Следующий щаг', callback_data: 'dnttalk' }],
@@ -56,7 +58,7 @@ bot.on('callback_query', async (query) => {
       })
     }
     case 'dnttalk': {
-      return await bot.sendMessage(chatId, message.dnttalk, {
+      return await bot.sendMessage( chatId,messageNego.dnttalk, {
         reply_markup: {
           inline_keyboard: [
             [{ text: 'Следующий щаг', callback_data: 'offer' }],
@@ -66,7 +68,7 @@ bot.on('callback_query', async (query) => {
       })
     }
     case 'offer': {
-      return await bot.sendMessage(chatId, message.offer, {
+      return await bot.sendMessage( chatId,messageNego.offer, {
         reply_markup: {
           inline_keyboard: [
             [{ text: 'Поднятие рейтинга', callback_data: 'boost' }],
@@ -77,9 +79,9 @@ bot.on('callback_query', async (query) => {
       })
     }
     case 'boost': {
-      await bot.sendMessage(chatId, message.boost.text);
-      await bot.sendMessage(chatId, message.boost.discription);
-      await bot.sendMessage(chatId, message.boost.helper, {
+      await bot.sendMessage(chatId, messageNego.boost.text);
+      await bot.sendMessage(chatId, messageNego.boost.discription);
+      await bot.sendMessage(chatId, messageNego.boost.helper, {
         reply_markup: {
           inline_keyboard: [
             [{ text: 'Следующий щаг', callback_data: 'timer' }],
@@ -90,9 +92,9 @@ bot.on('callback_query', async (query) => {
       return;
     }
     case 'timer': {
-      await bot.sendMessage(chatId, message.timer.text);
-      await bot.sendMessage(chatId, message.timer.discription);
-      return await bot.sendMessage(chatId, message.timer.helper, {
+      await bot.sendMessage(chatId, messageNego.timer.text);
+      await bot.sendMessage(chatId, messageNego.timer.discription);
+      return await bot.sendMessage(chatId, messageNego.timer.helper, {
         reply_markup: {
           inline_keyboard: [
             [{ text: 'Хороший оффер', callback_data: 'goodOffer' }],
@@ -105,9 +107,9 @@ bot.on('callback_query', async (query) => {
       })
     }
     case 'short': {
-      await bot.sendMessage(chatId, message.short.text);
-      await bot.sendMessage(chatId, message.short.discription);
-      return await bot.sendMessage(chatId, message.short.helper, {
+      await bot.sendMessage(chatId, messageNego.short.text);
+      await bot.sendMessage(chatId, messageNego.short.discription);
+      return await bot.sendMessage(chatId, messageNego.short.helper, {
         reply_markup: {
           inline_keyboard: [
             [{ text: 'Продлили', callback_data: 'timer' }],
@@ -117,9 +119,9 @@ bot.on('callback_query', async (query) => {
       })
     }
     case 'shortDisagree': {
-      await bot.sendMessage(chatId, message.short.text);
-      await bot.sendMessage(chatId, message.short.discription);
-      return await bot.sendMessage(chatId, message.shortDisagree.helper, {
+      await bot.sendMessage(chatId, messageNego.short.text);
+      await bot.sendMessage(chatId, messageNego.short.discription);
+      return await bot.sendMessage(chatId, messageNego.shortDisagree.helper, {
         reply_markup: {
           inline_keyboard: [
             [{ text: 'Продлили', callback_data: 'timer' }],
@@ -129,7 +131,7 @@ bot.on('callback_query', async (query) => {
       })
     }
     case 'goodOffer': {
-      return await bot.sendMessage(chatId, message.goodOffer, {
+      return await bot.sendMessage( chatId,messageNego.goodOffer, {
         reply_markup: {
           inline_keyboard: [
             [{ text: 'Следующий щаг', callback_data: 'think' }],
@@ -139,7 +141,7 @@ bot.on('callback_query', async (query) => {
       })
     }
     case 'normOffer': {
-      return await bot.sendMessage(chatId, message.normOffer, {
+      return await bot.sendMessage( chatId,messageNego.normOffer, {
         reply_markup: {
           inline_keyboard: [
             [{ text: 'Следующий щаг', callback_data: 'think' }],
@@ -149,7 +151,7 @@ bot.on('callback_query', async (query) => {
       })
     }
     case 'badOffer': {
-      return await bot.sendMessage(chatId, message.badOffer, {
+      return await bot.sendMessage( chatId,messageNego.badOffer, {
         reply_markup: {
           inline_keyboard: [
             [{ text: 'Следующий щаг', callback_data: 'dntAgree' }],
@@ -159,7 +161,7 @@ bot.on('callback_query', async (query) => {
       })
     }
     case 'think': {
-      return await bot.sendMessage(chatId, message.think, {
+      return await bot.sendMessage( chatId,messageNego.think, {
         reply_markup: {
           inline_keyboard: [
             [{ text: 'Согласиться на оффер', callback_data: 'accept' }],
@@ -170,7 +172,7 @@ bot.on('callback_query', async (query) => {
       })
     }
     case 'dntAgree': {
-      return await bot.sendMessage(chatId, message.dntAgree, {
+      return await bot.sendMessage( chatId,messageNego.dntAgree, {
         reply_markup: {
           inline_keyboard: [
             [{ text: ' Попытайся еще раз', callback_data: 'ansFrBdOff' }],
@@ -180,7 +182,7 @@ bot.on('callback_query', async (query) => {
       })
     }
     case 'accept': {
-      return await bot.sendMessage(chatId, message.accept, {
+      return await bot.sendMessage( chatId,messageNego.accept, {
         reply_markup: {
           inline_keyboard: [
             [{ text: 'Следующий щаг', callback_data: 'start' }],
@@ -190,11 +192,11 @@ bot.on('callback_query', async (query) => {
       })
     }
     case 'tryAdd': {
-      await bot.sendMessage(chatId, message.tryAdd.text);
-      await bot.sendMessage(chatId, message.tryAdd.discription1);
-      await bot.sendMessage(chatId, message.tryAdd.helper1);
-      await bot.sendMessage(chatId, message.tryAdd.discription2);
-      return await bot.sendMessage(chatId, message.helper2, {
+      await bot.sendMessage(chatId, messageNego.tryAdd.text);
+      await bot.sendMessage(chatId, messageNego.tryAdd.discription1);
+      await bot.sendMessage(chatId, messageNego.tryAdd.helper1);
+      await bot.sendMessage(chatId, messageNego.tryAdd.discription2);
+      return await bot.sendMessage(chatId, messageNego.helper2, {
         reply_markup: {
           inline_keyboard: [
             [{ text: 'Начнем с начала', callback_data: 'start' }],
@@ -204,9 +206,28 @@ bot.on('callback_query', async (query) => {
       })
     }
     case 'ansFrBdOff': {
-      await bot.sendMessage(chatId, message.ansFrBdOff.text);
-      await bot.sendMessage(chatId, message.ansFrBdOff.discription1);
-      return await bot.sendMessage(chatId, message.ansFrBdOff.helper, {
+      await bot.sendMessage(chatId, messageNego.ansFrBdOff.text);
+      await bot.sendMessage(chatId, messageNego.ansFrBdOff.discription1);
+      return await bot.sendMessage(chatId, messageNego.ansFrBdOff.helper, {
+        reply_markup: {
+          inline_keyboard: [
+            [{ text: 'Начнем с начала', callback_data: 'start' }],
+            [{ text: 'Предыдущий шаг', callback_data: 'timer' }]
+          ]
+        }
+      })
+    }
+    case 'pdf' : {
+      return await bot.sendDocument( chatId, './xxx.pdf', {
+        reply_markup: {
+          inline_keyboard: [
+            [{text: 'назад', callback_data:'start'}]
+          ]
+        }
+      })
+    }
+    case 'pdf' : {
+      return await bot.sendDocument( chatId, './xxx.pdf', {
         reply_markup: {
           inline_keyboard: [
             [{ text: 'Начнем с начала', callback_data: 'start' }],
