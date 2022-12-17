@@ -1,4 +1,4 @@
-import { message } from 'msg.js'
+const message = require('./msg')
 
 const TelegramBot = require('node-telegram-bot-api');
 
@@ -54,7 +54,7 @@ bot.on('callback_query', async(query) => {
       })
     }
     case 'nego' : {
-      return await bot.sendMessage( chatId,'2', {
+      return await bot.sendMessage( chatId, message.write, {
         reply_markup: {
           inline_keyboard: [
             [{text: 'вперед', callback_data:'call'}],
@@ -64,7 +64,7 @@ bot.on('callback_query', async(query) => {
       })
     }
     case 'call': {
-      return await bot.sendMessage( chatId,'3', {
+      return await bot.sendMessage( chatId, message.dnttalk, {
         reply_markup: {
           inline_keyboard: [
             [{text: 'вперед', callback_data:'write'}],
