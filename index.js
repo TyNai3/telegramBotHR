@@ -1,4 +1,5 @@
-const message = require('./msg')
+const messageNego = require('./msgNego');
+const messageOffer = require('./msgOffer');
 
 const TelegramBot = require('node-telegram-bot-api');
 
@@ -31,7 +32,7 @@ bot.on('callback_query', async(query) => {
   const chatId = query.message.chat.id;
   switch(query.data) {
     case 'start': {
-      return await bot.sendMessage( chatId, message.start, {
+      return await bot.sendMessage( chatId, messageNego.start, {
         reply_markup: {
           inline_keyboard: [
             [{text: 'Переговоры', callback_data:'call'}],
@@ -41,7 +42,7 @@ bot.on('callback_query', async(query) => {
       })
     }
     case 'call' : {
-      return await bot.sendMessage( chatId, message.call, {
+      return await bot.sendMessage( chatId, messageNego.call, {
         reply_markup: {
           inline_keyboard: [
             [{text: 'вперед', callback_data:'write'}],
@@ -51,7 +52,7 @@ bot.on('callback_query', async(query) => {
       })
     }
     case 'write': {
-      return await bot.sendMessage( chatId, message.write, {
+      return await bot.sendMessage( chatId, messageNego.write, {
         reply_markup: {
           inline_keyboard: [
             [{text: 'вперед', callback_data:'dnttalk'}],
@@ -61,7 +62,7 @@ bot.on('callback_query', async(query) => {
       })
     }
     case 'dnttalk': {
-      return await bot.sendMessage( chatId,message.dnttalk, {
+      return await bot.sendMessage( chatId,messageNego.dnttalk, {
         reply_markup: {
           inline_keyboard: [
             [{text: 'вперед', callback_data:'offer'}],
@@ -71,7 +72,7 @@ bot.on('callback_query', async(query) => {
       })
     }
     case 'offer': {
-      return await bot.sendMessage( chatId,message.offer, {
+      return await bot.sendMessage( chatId,messageNego.offer, {
         reply_markup: {
           inline_keyboard: [
             [{text: 'Поднятие рейтинга', callback_data:'boost'}],
@@ -82,7 +83,7 @@ bot.on('callback_query', async(query) => {
       })
     }
     case 'boost': {
-      return await bot.sendMessage( chatId,message.boost, {
+      return await bot.sendMessage( chatId,messageNego.boost, {
         reply_markup: {
           inline_keyboard: [
             [{text: 'вперед', callback_data:'timer'}],
@@ -92,7 +93,7 @@ bot.on('callback_query', async(query) => {
       })
     }
     case 'timer': {
-      return await bot.sendMessage( chatId,message.timer, {
+      return await bot.sendMessage( chatId,messageNego.timer, {
         reply_markup: {
           inline_keyboard: [
             [{text: 'Хороший оффер', callback_data:'goodOffer'}],
@@ -105,7 +106,7 @@ bot.on('callback_query', async(query) => {
       })
     }
     case 'short': {
-      return await bot.sendMessage( chatId,message.short, {
+      return await bot.sendMessage( chatId,messageNego.short, {
         reply_markup: {
           inline_keyboard: [
             [{text: 'Продлили', callback_data:'timer'}],
@@ -115,7 +116,7 @@ bot.on('callback_query', async(query) => {
       })
     }
     case 'shortDisagree': {
-      return await bot.sendMessage( chatId,message.shortDisagree, {
+      return await bot.sendMessage( chatId,messageNego.shortDisagree, {
         reply_markup: {
           inline_keyboard: [
             [{text: 'Продлили', callback_data:'timer'}],
@@ -125,7 +126,7 @@ bot.on('callback_query', async(query) => {
       })
     }
     case 'goodOffer': {
-      return await bot.sendMessage( chatId,message.goodOffer, {
+      return await bot.sendMessage( chatId,messageNego.goodOffer, {
         reply_markup: {
           inline_keyboard: [
             [{text: 'вперед', callback_data:'think'}],
@@ -135,7 +136,7 @@ bot.on('callback_query', async(query) => {
       })
     }
     case 'normOffer': {
-      return await bot.sendMessage( chatId,message.normOffer, {
+      return await bot.sendMessage( chatId,messageNego.normOffer, {
         reply_markup: {
           inline_keyboard: [
             [{text: 'вперед', callback_data:'think'}],
@@ -145,7 +146,7 @@ bot.on('callback_query', async(query) => {
       })
     }
     case 'badOffer': {
-      return await bot.sendMessage( chatId,message.badOffer, {
+      return await bot.sendMessage( chatId,messageNego.badOffer, {
         reply_markup: {
           inline_keyboard: [
             [{text: 'вперед', callback_data:'dntAgree'}],
@@ -155,7 +156,7 @@ bot.on('callback_query', async(query) => {
       })
     }
     case 'think': {
-      return await bot.sendMessage( chatId,message.think, {
+      return await bot.sendMessage( chatId,messageNego.think, {
         reply_markup: {
           inline_keyboard: [
             [{text: 'Согласиться на оффер', callback_data:'accept'}],
@@ -166,7 +167,7 @@ bot.on('callback_query', async(query) => {
       })
     }
     case 'dntAgree': {
-      return await bot.sendMessage( chatId,message.dntAgree, {
+      return await bot.sendMessage( chatId,messageNego.dntAgree, {
         reply_markup: {
           inline_keyboard: [
             [{text: ' Попытайся еще раз', callback_data:'ansFrBdOff'}],
@@ -176,7 +177,7 @@ bot.on('callback_query', async(query) => {
       })
     }
     case 'accept': {
-      return await bot.sendMessage( chatId,message.accept, {
+      return await bot.sendMessage( chatId,messageNego.accept, {
         reply_markup: {
           inline_keyboard: [
             [{text: 'вперед', callback_data:'start'}],
@@ -186,7 +187,7 @@ bot.on('callback_query', async(query) => {
       })
     }
     case 'tryAdd': {
-      return await bot.sendMessage( chatId,message.tryAdd, {
+      return await bot.sendMessage( chatId,messageNego.tryAdd, {
         reply_markup: {
           inline_keyboard: [
             [{text: 'Начнем с начала', callback_data:'start'}],
@@ -195,8 +196,8 @@ bot.on('callback_query', async(query) => {
         }
       })
     }
-    case 'ansFrBdOff': {
-      return await bot.sendMessage( chatId,message.ansFrBdOff, {
+    case 'ansFrBdOff': {''
+      return await bot.sendMessage( chatId,messageNego.ansFrBdOff, {
         reply_markup: {
           inline_keyboard: [
             [{text: 'Начнем с начала', callback_data:'start'}],
