@@ -17,7 +17,8 @@ bot.on('message', async(msg) => {
       reply_markup: {
         inline_keyboard: [
           [{text: 'Переговоры', callback_data:'call'}],
-          [{text: 'Поиск работы', callback_data:'lfj'}]
+          [{text: 'Поиск работы', callback_data:'lfj'}],
+          [{text: 'PDF', callback_data:'pdf'}]
         ]
       }
     })
@@ -200,6 +201,15 @@ bot.on('callback_query', async(query) => {
           inline_keyboard: [
             [{text: 'Начнем с начала', callback_data:'start'}],
             [{text: 'назад', callback_data:'timer'}]
+          ]
+        }
+      })
+    }
+    case 'pdf' : {
+      return await bot.sendDocument( chatId, './xxx.pdf', {
+        reply_markup: {
+          inline_keyboard: [
+            [{text: 'назад', callback_data:'start'}]
           ]
         }
       })
