@@ -2,6 +2,7 @@ const messageNego = require('./msgNego');
 const messageOffer = require('./msgOffer');
 
 const TelegramBot = require('node-telegram-bot-api');
+const axios = require('axios')
 
 const token = '5952866056:AAFIG-h4IWP7co5TPKTlzUAepirmJdYpnGM';
 
@@ -10,14 +11,14 @@ const bot = new TelegramBot(token, { polling: true });
 bot.on('message', async (msg) => {
   const chatId = msg.chat.id;
   const text = msg.text
-  console.log(text === 'xui');
   if (text === '/start') {
     await bot.sendMessage(chatId, messageNego.start, {
       reply_markup: {
         inline_keyboard: [
           [{text: 'Переговоры', callback_data:'call'}],
           [{text: 'Поиск работы', callback_data:'lfj'}],
-          [{text: 'PDF', callback_data:'pdf'}]
+          [{text: 'PDF', callback_data:'pdf'}],
+          [{text: 'Рандомный кот', callback_data:'gif'}]
         ]
       }
     })
@@ -226,16 +227,17 @@ bot.on('callback_query', async (query) => {
         }
       })
     }
-    case 'pdf' : {
-      return await bot.sendDocument( chatId, './xxx.pdf', {
+    case 'gif' : {
+      const res = await axios.get('https://api.giphy.com/v1/gifs/random?api_key=M1kIUJbwwhJv1QoPn4A4G2WR9JFHmHCq&tag=cat')
+      const path = res.data.data.images.downsized.url
+      return await bot.sendDocument(chatId, path, {
         reply_markup: {
           inline_keyboard: [
-            [{ text: 'Начнем с начала', callback_data: 'start' }],
-            [{ text: 'Предыдущий шаг', callback_data: 'timer' }]
+            [{text: 'ещё', callback_data:'gif'}]
           ]
         }
       })
     }
   }
-
 })
+
