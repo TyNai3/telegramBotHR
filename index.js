@@ -27,7 +27,7 @@ bot.on('message', async(msg) => {
   const text = msg.text
   console.log(text === 'xui');
   if(text ===  '/start') {
-    await bot.sendMessage( chatId,'knopka', {
+    await bot.sendMessage( chatId,message.nego, {
       reply_markup: {
         inline_keyboard: [
           [{text: 'Переговоры', callback_data:'nego'}],
@@ -54,7 +54,7 @@ bot.on('callback_query', async(query) => {
       })
     }
     case 'nego' : {
-      return await bot.sendMessage( chatId, message.write, {
+      return await bot.sendMessage( chatId, message.call, {
         reply_markup: {
           inline_keyboard: [
             [{text: 'вперед', callback_data:'call'}],
@@ -64,7 +64,7 @@ bot.on('callback_query', async(query) => {
       })
     }
     case 'call': {
-      return await bot.sendMessage( chatId, message.dnttalk, {
+      return await bot.sendMessage( chatId, message.write, {
         reply_markup: {
           inline_keyboard: [
             [{text: 'вперед', callback_data:'write'}],
@@ -74,7 +74,7 @@ bot.on('callback_query', async(query) => {
       })
     }
     case 'write': {
-      return await bot.sendMessage( chatId,'4', {
+      return await bot.sendMessage( chatId,message.dnttalk, {
         reply_markup: {
           inline_keyboard: [
             [{text: 'вперед', callback_data:'dnttalk'}],
