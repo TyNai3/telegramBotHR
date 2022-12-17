@@ -2,7 +2,11 @@ const TelegramBot = require('node-telegram-bot-api');
 
 // replace the value below with the Telegram token you receive from @BotFather
 const token = '5952866056:AAFIG-h4IWP7co5TPKTlzUAepirmJdYpnGM';
-const webAppUrl = 'https://ya.ru'
+const history = {
+  nego:'nego msg',
+  write: 'write msg',
+  dnttalk: 'dont talk',
+}
 
 // Create a bot that uses 'polling' to fetch new updates
 const bot = new TelegramBot(token, {polling: true});
@@ -28,16 +32,69 @@ bot.on('message', async(msg) => {
   if(text ===  '/start') {
     await bot.sendMessage( chatId,'knopka', {
       reply_markup: {
-        keyboard: [
-          [{text: 'knopka', web_app: {url: webAppUrl }}]
+        inline_keyboard: [
+          [{text: 'Переговоры', callback_data:'nego'}],
+          [{text: 'Поиск работы', callback_data:'lfj'}]
         ]
       }
     })
   }
-  if (text === 'xui') {
-    console.log(123);
-     bot.sendMessage(chatId, text)
-  }
   // send a message to the chat acknowledging receipt of their message
   // bot.sendMessage(chatId, 'Received your message');
 });
+
+bot.on('callback_query', async(query) => {
+  const chatId = query.message.chat.id;
+  switch(query.data) {
+    case 'start': {
+      return await bot.sendMessage( chatId,'1', {
+        reply_markup: {
+          inline_keyboard: [
+            [{text: 'Переговоры', callback_data:'nego'}],
+            [{text: 'Поиск работы', callback_data:'lfj'}]
+          ]
+        }
+      })
+    }
+    case 'nego' : {
+      return await bot.sendMessage( chatId,'2', {
+        reply_markup: {
+          inline_keyboard: [
+            [{text: 'вперед', callback_data:'call'}],
+            [{text: 'назад', callback_data:'start'}]
+          ]
+        }
+      })
+    }
+    case 'call': {
+      return await bot.sendMessage( chatId,'3', {
+        reply_markup: {
+          inline_keyboard: [
+            [{text: 'вперед', callback_data:'write'}],
+            [{text: 'назад', callback_data:'nego'}]
+          ]
+        }
+      })
+    }
+    case 'write': {
+      return await bot.sendMessage( chatId,'4', {
+        reply_markup: {
+          inline_keyboard: [
+            [{text: 'вперед', callback_data:'dnttalk'}],
+            [{text: 'назад', callback_data:'call'}]
+          ]
+        }
+      })
+    }
+    case 'dnttalk': {
+      return await bot.sendMessage( chatId,'5', {
+        reply_markup: {
+          inline_keyboard: [
+            [{text: 'вперед', callback_data:'start'}],
+            [{text: 'назад', callback_data:'write'}]
+          ]
+        }
+      })
+    }
+  }
+})
