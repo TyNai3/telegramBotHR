@@ -2,12 +2,11 @@ const messageNego = require('./msgNego');
 const messageOffer = require('./msgOffer');
 
 const TelegramBot = require('node-telegram-bot-api');
-const axios = require('axios')
+const axios = require('axios');
 
 const token = '5952866056:AAFIG-h4IWP7co5TPKTlzUAepirmJdYpnGM';
 
 const bot = new TelegramBot(token, { polling: true });
-
 bot.on('message', async (msg) => {
   const chatId = msg.chat.id;
   const text = msg.text
@@ -100,7 +99,7 @@ bot.on('callback_query', async (query) => {
     }
     case 'timer': {
       await bot.sendMessage(chatId, messageNego.timer.text);
-      await bot.sendMessage(chatId, messageNego.timer.discription);
+      await bot.sendMessage(chatId, messageNego.timer.discription, {parse_mode: 'Markdown'});
       return await bot.sendMessage(chatId, messageNego.timer.helper, {
         parse_mode: 'Markdown',
         reply_markup: {
@@ -116,8 +115,8 @@ bot.on('callback_query', async (query) => {
     }
     case 'short': {
       await bot.sendMessage(chatId, messageNego.short.text);
-      await bot.sendMessage(chatId, messageNego.short.discription);
-      return await bot.sendMessage(chatId, messageNego.short.helper, {
+      await bot.sendMessage(chatId, messageNego.short.discription, {parse_mode: 'Markdown'});
+      await bot.sendMessage(chatId, messageNego.short.helper, {
         parse_mode: 'Markdown',
         reply_markup: {
           inline_keyboard: [
@@ -125,11 +124,12 @@ bot.on('callback_query', async (query) => {
             [{ text: 'Не продлили', callback_data: 'shortDisagree' }],
           ]
         }
-      })
+      });
+      return;
     }
     case 'shortDisagree': {
       await bot.sendMessage(chatId, messageNego.short.text);
-      await bot.sendMessage(chatId, messageNego.short.discription);
+      await bot.sendMessage(chatId, messageNego.short.discription, {parse_mode: 'Markdown'});
       return await bot.sendMessage(chatId, messageNego.shortDisagree.helper, {
         parse_mode: 'Markdown',
         reply_markup: {
@@ -195,7 +195,7 @@ bot.on('callback_query', async (query) => {
       return await bot.sendMessage(chatId, messageNego.accept, {
         reply_markup: {
           inline_keyboard: [
-            [{ text: 'Следующий шаг', callback_data: 'start' }],
+            [{ text: 'Начнем с начала', callback_data: 'start' }],
             [{ text: 'Предыдущий шаг', callback_data: 'think' }]
           ]
         }
@@ -203,22 +203,23 @@ bot.on('callback_query', async (query) => {
     }
     case 'tryAdd': {
       await bot.sendMessage(chatId, messageNego.tryAdd.text);
-      await bot.sendMessage(chatId, messageNego.tryAdd.discription1);
+      await bot.sendMessage(chatId, messageNego.tryAdd.discription1, {parse_mode: 'Markdown'});
       await bot.sendMessage(chatId, messageNego.tryAdd.helper1, { parse_mode: 'Markdown' });
-      await bot.sendMessage(chatId, messageNego.tryAdd.discription2);
-      return await bot.sendMessage(chatId, messageNego.helper2, {
+      await bot.sendMessage(chatId, messageNego.tryAdd.discription2, {parse_mode: 'Markdown'});
+      await bot.sendMessage(chatId, messageNego.tryAdd.helper2, {
         parse_mode: 'Markdown',
         reply_markup: {
           inline_keyboard: [
-            [{ text: 'Начнем с начала', callback_data: 'start' }],
+            [{text: 'Начнем с начала', callback_data: 'start'}],
             [{ text: 'Предыдущий шаг', callback_data: 'think' }]
           ]
         }
       })
+      return;
     }
     case 'ansFrBdOff': {
       await bot.sendMessage(chatId, messageNego.ansFrBdOff.text);
-      await bot.sendMessage(chatId, messageNego.ansFrBdOff.discription1);
+      await bot.sendMessage(chatId, messageNego.ansFrBdOff.discription, {parse_mode: 'Markdown'});
       return await bot.sendMessage(chatId, messageNego.ansFrBdOff.helper, {
         parse_mode: 'Markdown',
         reply_markup: {
