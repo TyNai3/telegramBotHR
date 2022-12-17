@@ -18,7 +18,8 @@ bot.on('message', async (msg) => {
           [{text: 'Переговоры', callback_data:'call'}],
           [{text: 'Поиск работы', callback_data:'lfj'}],
           [{text: 'PDF', callback_data:'pdf'}],
-          [{text: 'Рандомный кот', callback_data:'gif'}]
+          [{text: 'Рандомный кот', callback_data:'gif'}],
+          [{text: 'Написать коучу', callback_data:'coach'}]
         ]
       }
     })
@@ -234,6 +235,15 @@ bot.on('callback_query', async (query) => {
         reply_markup: {
           inline_keyboard: [
             [{text: 'ещё', callback_data:'gif'}]
+          ]
+        }
+      })
+    }
+    case 'coach' : {
+      return await bot.sendMessage( chatId, '@krutikovanad', {
+        reply_markup: {
+          inline_keyboard: [
+            [{text: 'назад', callback_data:'start'}]
           ]
         }
       })
