@@ -12,7 +12,7 @@ bot.on('message', async (msg) => {
   const text = msg.text
   console.log(text === 'xui');
   if (text === '/start') {
-    await bot.sendMessage(chatId, message.start, {
+    await bot.sendMessage(chatId, messageNego.start, {
       reply_markup: {
         inline_keyboard: [
           [{text: 'Переговоры', callback_data:'call'}],
