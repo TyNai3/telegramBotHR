@@ -1,12 +1,9 @@
+import { message } from 'msg.js'
+
 const TelegramBot = require('node-telegram-bot-api');
 
 // replace the value below with the Telegram token you receive from @BotFather
 const token = '5952866056:AAFIG-h4IWP7co5TPKTlzUAepirmJdYpnGM';
-const history = {
-  nego:'nego msg',
-  write: 'write msg',
-  dnttalk: 'dont talk',
-}
 
 // Create a bot that uses 'polling' to fetch new updates
 const bot = new TelegramBot(token, {polling: true});
@@ -47,7 +44,7 @@ bot.on('callback_query', async(query) => {
   const chatId = query.message.chat.id;
   switch(query.data) {
     case 'start': {
-      return await bot.sendMessage( chatId,'1', {
+      return await bot.sendMessage( chatId, message.nego, {
         reply_markup: {
           inline_keyboard: [
             [{text: 'Переговоры', callback_data:'nego'}],
