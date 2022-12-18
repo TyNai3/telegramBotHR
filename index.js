@@ -10,9 +10,9 @@ const bot = new TelegramBot(token, { polling: true });
 
 bot.setMyCommands([
   {command: '/start', description:'В начало'}, 
-  {command:'/gif', description:'Рандомный кот'},
-  {command:'/pdf', description:'Скачать блок-схему'},
-  {command:'/coach', description:'Написать коучу'}
+  {command: '/gif', description:'Рандомный кот'},
+  {command: '/pdf', description:'Скачать блок-схему'},
+  {command: '/coach', description:'Написать коучу'}
 ])
 
 bot.on('message', async (msg) => {
@@ -248,15 +248,6 @@ bot.on('callback_query', async (query) => {
           inline_keyboard: [
             [{ text: 'Начнем с начала', callback_data: 'start' }],
             [{ text: 'Предыдущий шаг', callback_data: 'timer' }]
-          ]
-        }
-      })
-    }
-    case 'pdf': {
-      return await bot.sendDocument(chatId, './xxx.pdf', {
-        reply_markup: {
-          inline_keyboard: [
-            [{ text: 'Предыдущий шаг', callback_data: 'start' }]
           ]
         }
       })
