@@ -8,6 +8,13 @@ const token = '5952866056:AAFIG-h4IWP7co5TPKTlzUAepirmJdYpnGM';
 
 const bot = new TelegramBot(token, { polling: true });
 
+bot.setMyCommands([
+  {command: '/start', description:'В начало'}, 
+  {command:'/gif', description:'Рандомный кот'},
+  {command:'/pdf', description:'Скачать блок-схему'},
+  {command:'/coach', description:'Написать коучу'}
+])
+
 bot.on('message', async (msg) => {
   const chatId = msg.chat.id;
   const text = msg.text
@@ -15,13 +22,29 @@ bot.on('message', async (msg) => {
     await bot.sendMessage(chatId, messageNego.start, {
       reply_markup: {
         inline_keyboard: [
-          [{ text: 'Переговоры', callback_data: 'call' }],
-          [{ text: 'Поиск работы', callback_data: 'offer_start' }],
-          [{ text: 'PDF', callback_data: 'pdf' }],
-          [{ text: 'Рандомный кот', callback_data: 'gif' }],
-          [{ text: 'Написать коучу', callback_data: 'coach' }]
+          [{text: 'Переговоры', callback_data:'call'}],
+          [{text: 'Поиск работы', callback_data:'offer_start'}]
         ]
       }
+    })
+  }
+  if (text === '/gif'){
+    const res = await axios.get('https://api.giphy.com/v1/gifs/random?api_key=M1kIUJbwwhJv1QoPn4A4G2WR9JFHmHCq&tag=cat')
+      const path = res.data.data.images.downsized.url
+      return await bot.sendDocument(chatId, path, {
+        reply_markup: {
+          inline_keyboard: [
+            [{text: 'ещё', callback_data:'gif'}]
+          ]
+        }
+      })
+  }
+  if(text === '/pdf'){
+    await bot.sendDocument( chatId, './xxx.pdf', {
+    })
+  }
+  if(text === '/coach'){
+    await bot.sendMessage( chatId, '@krutikovanad', {
     })
   }
 });
@@ -573,15 +596,6 @@ bot.on('callback_query', async (query) => {
         reply_markup: {
           inline_keyboard: [
             [{ text: 'ещё', callback_data: 'gif' }]
-          ]
-        }
-      })
-    }
-    case 'coach': {
-      return await bot.sendMessage(chatId, '@krutikovanad', {
-        reply_markup: {
-          inline_keyboard: [
-            [{ text: 'Предыдущий шаг', callback_data: 'start' }]
           ]
         }
       })
