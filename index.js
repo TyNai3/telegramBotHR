@@ -40,7 +40,9 @@ bot.on('message', async (msg) => {
     })
   }
   if (text === '/pdf') {
-    await bot.sendDocument(chatId, './Plan.pdf', {
+    await bot.sendDocument(chatId, './Plan_negotiation.pdf', {
+    });
+    await bot.sendDocument(chatId, './Plan_search.pdf', {
     })
   }
   if (text === '/coach') {
