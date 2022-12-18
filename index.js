@@ -2,7 +2,7 @@ const messageNego = require('./msgNego');
 const messageOffer = require('./msgOffer');
 
 const TelegramBot = require('node-telegram-bot-api');
-const axios = require('axios')
+const axios = require('axios');
 
 const token = '5952866056:AAFIG-h4IWP7co5TPKTlzUAepirmJdYpnGM';
 
@@ -123,7 +123,7 @@ bot.on('callback_query', async (query) => {
     }
     case 'timer': {
       await bot.sendMessage(chatId, messageNego.timer.text);
-      await bot.sendMessage(chatId, messageNego.timer.discription);
+      await bot.sendMessage(chatId, messageNego.timer.discription, { parse_mode: 'Markdown' });
       return await bot.sendMessage(chatId, messageNego.timer.helper, {
         parse_mode: 'Markdown',
         reply_markup: {
@@ -139,8 +139,8 @@ bot.on('callback_query', async (query) => {
     }
     case 'short': {
       await bot.sendMessage(chatId, messageNego.short.text);
-      await bot.sendMessage(chatId, messageNego.short.discription);
-      return await bot.sendMessage(chatId, messageNego.short.helper, {
+      await bot.sendMessage(chatId, messageNego.short.discription, { parse_mode: 'Markdown' });
+      await bot.sendMessage(chatId, messageNego.short.helper, {
         parse_mode: 'Markdown',
         reply_markup: {
           inline_keyboard: [
@@ -148,11 +148,12 @@ bot.on('callback_query', async (query) => {
             [{ text: 'Не продлили', callback_data: 'shortDisagree' }],
           ]
         }
-      })
+      });
+      return;
     }
     case 'shortDisagree': {
       await bot.sendMessage(chatId, messageNego.short.text);
-      await bot.sendMessage(chatId, messageNego.short.discription);
+      await bot.sendMessage(chatId, messageNego.short.discription, { parse_mode: 'Markdown' });
       return await bot.sendMessage(chatId, messageNego.shortDisagree.helper, {
         parse_mode: 'Markdown',
         reply_markup: {
@@ -226,10 +227,10 @@ bot.on('callback_query', async (query) => {
     }
     case 'tryAdd': {
       await bot.sendMessage(chatId, messageNego.tryAdd.text);
-      await bot.sendMessage(chatId, messageNego.tryAdd.discription1);
+      await bot.sendMessage(chatId, messageNego.tryAdd.discription1, { parse_mode: 'Markdown' });
       await bot.sendMessage(chatId, messageNego.tryAdd.helper1, { parse_mode: 'Markdown' });
-      await bot.sendMessage(chatId, messageNego.tryAdd.discription2);
-      return await bot.sendMessage(chatId, messageNego.helper2, {
+      await bot.sendMessage(chatId, messageNego.tryAdd.discription2, { parse_mode: 'Markdown' });
+      await bot.sendMessage(chatId, messageNego.tryAdd.helper2, {
         parse_mode: 'Markdown',
         reply_markup: {
           inline_keyboard: [
@@ -238,10 +239,11 @@ bot.on('callback_query', async (query) => {
           ]
         }
       })
+      return;
     }
     case 'ansFrBdOff': {
       await bot.sendMessage(chatId, messageNego.ansFrBdOff.text);
-      await bot.sendMessage(chatId, messageNego.ansFrBdOff.discription1);
+      await bot.sendMessage(chatId, messageNego.ansFrBdOff.discription, { parse_mode: 'Markdown' });
       return await bot.sendMessage(chatId, messageNego.ansFrBdOff.helper, {
         parse_mode: 'Markdown',
         reply_markup: {
@@ -252,6 +254,9 @@ bot.on('callback_query', async (query) => {
         }
       })
     }
+
+    //Case msgOffer
+
     case 'offer_start': {
       console.log('messageOffer');
       return await bot.sendMessage(chatId, messageOffer.offer_start, {
@@ -265,7 +270,9 @@ bot.on('callback_query', async (query) => {
       })
     }
     case 'cv_public': {
-      return await bot.sendMessage(chatId, messageOffer.cv_public, {
+      // await bot.sendMessage(chatId, messageOffer.cv_public);
+      // await bot.sendMessage(chatId, messageOffer.cv_public);
+      await bot.sendMessage(chatId, messageOffer.cv_public, {
         reply_markup: {
           inline_keyboard: [
             [{ text: 'HR сама написала', callback_data: 'cv_works' }],
@@ -274,19 +281,24 @@ bot.on('callback_query', async (query) => {
             [{ text: '⬅️ Предыдущий шаг', callback_data: 'offer_start' }]
           ]
         }
-      })
+      });
+      return;
     }
     case 'kiss_hr': {
-      return await bot.sendMessage(chatId, messageOffer.kiss_hr, {
+      await bot.sendMessage(chatId, messageOffer.kiss_hr.text);
+      await bot.sendMessage(chatId, messageOffer.kiss_hr.discription, { parse_mode: 'Markdown' });
+      await bot.sendMessage(chatId, messageOffer.kiss_hr.helper, {
         reply_markup: {
           inline_keyboard: [
             [{ text: '⬅️ Предыдущий шаг', callback_data: 'cv_public' }]
           ]
         }
-      })
+      });
+      return;
     }
     case 'i_see_you': {
       return await bot.sendMessage(chatId, messageOffer.i_see_you, {
+        parse_mode: 'Markdown',
         reply_markup: {
           inline_keyboard: [
             [{ text: 'ЗП не указана. На руках есть оффер', callback_data: 'money_with_offer' }],
@@ -312,7 +324,10 @@ bot.on('callback_query', async (query) => {
       })
     }
     case 'money_with_offer': {
-      return await bot.sendMessage(chatId, messageOffer.money_with_offer, {
+      await bot.sendMessage(chatId, messageOffer.money_with_offer.text);
+      await bot.sendMessage(chatId, messageOffer.money_with_offer.discription, { parse_mode: 'Markdown' });
+      return await bot.sendMessage(chatId, messageOffer.money_with_offer.helper, {
+        parse_mode: 'Markdown',
         reply_markup: {
           inline_keyboard: [
             [{ text: '⬅️ Предыдущий шаг', callback_data: 'cv_works' }]
@@ -321,7 +336,10 @@ bot.on('callback_query', async (query) => {
       })
     }
     case 'money_wo_offer': {
+      await bot.sendMessage(chatId, messageOffer.money_wo_offer.text);
+      await bot.sendMessage(chatId, messageOffer.money_wo_offer.discription, { parse_mode: 'Markdown' });
       return await bot.sendMessage(chatId, messageOffer.money_wo_offer, {
+        parse_mode: 'Markdown',
         reply_markup: {
           inline_keyboard: [
             [{ text: '⬅️ Предыдущий шаг', callback_data: 'cv_works' }]
@@ -329,8 +347,11 @@ bot.on('callback_query', async (query) => {
         }
       })
     }
-    case 'dont_want_to_talk': {
-      return await bot.sendMessage(chatId, messageOffer.dont_want_to_talk, {
+    case 'want_to_talk': {
+      await bot.sendMessage(chatId, messageOffer.want_to_talk.text);
+      await bot.sendMessage(chatId, messageOffer.want_to_talk.discription, { parse_mode: 'Markdown' });
+      return await bot.sendMessage(chatId, messageOffer.want_to_talk.helper, {
+        parse_mode: 'Markdown',
         reply_markup: {
           inline_keyboard: [
             [{ text: 'Начнем с начала', callback_data: 'start' }],
@@ -339,9 +360,10 @@ bot.on('callback_query', async (query) => {
         }
       })
     }
-    case 'want_to_talk': {
-      return await bot.sendMessage(chatId, messageOffer.want_to_talk, {
-        parse_mode: 'Markdown',
+    case 'dont_want_to_talk': {
+      await bot.sendMessage(chatId, messageOffer.dont_want_to_talk.text);
+      await bot.sendMessage(chatId, messageOffer.dont_want_to_talk.discription, { parse_mode: 'Markdown' });
+      return await bot.sendMessage(chatId, messageOffer.dont_want_to_talk.helper, {
         reply_markup: {
           inline_keyboard: [
             [{ text: '⬅️ Предыдущий шаг', callback_data: 'cv_works' },
@@ -529,7 +551,10 @@ bot.on('callback_query', async (query) => {
       })
     }
     case 'cold_linked': {
-      return await bot.sendMessage(chatId, messageOffer.cold_linked, {
+      await bot.sendMessage(chatId, messageOffer.cold_linked.text, { parse_mode: 'Markdown' });
+      await bot.sendMessage(chatId, messageOffer.cold_linked.discription, { parse_mode: 'Markdown' });
+      return await bot.sendMessage(chatId, messageOffer.cold_linked.helper, {
+        parse_mode: 'Markdown',
         reply_markup: {
           inline_keyboard: [
             [{ text: 'Договариваемся о собеседовании', callback_data: 'keep_talking' }],
@@ -539,7 +564,10 @@ bot.on('callback_query', async (query) => {
       })
     }
     case 'cold_telegram': {
-      return await bot.sendMessage(chatId, messageOffer.cold_telegram, {
+      await bot.sendMessage(chatId, messageOffer.cold_telegram.text, { parse_mode: 'Markdown' });
+      await bot.sendMessage(chatId, messageOffer.cold_telegram.discription, { parse_mode: 'Markdown' });
+      return await bot.sendMessage(chatId, messageOffer.cold_telegram.helper, {
+        parse_mode: 'Markdown',
         reply_markup: {
           inline_keyboard: [
             [{ text: 'Договариваемся о собеседовании', callback_data: 'keep_talking' }],
@@ -549,6 +577,8 @@ bot.on('callback_query', async (query) => {
       })
     }
     case 'cold_agency': {
+      await bot.sendMessage(chatId, messageOffer.cold_agency, { parse_mode: 'Markdown' });
+      await bot.sendMessage(chatId, messageOffer.cold_agency, { parse_mode: 'Markdown' });
       return await bot.sendMessage(chatId, messageOffer.cold_agency, {
         reply_markup: {
           inline_keyboard: [
