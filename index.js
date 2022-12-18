@@ -69,8 +69,8 @@ bot.on('callback_query', async (query) => {
       return await bot.sendMessage(chatId, messageNego.call, {
         reply_markup: {
           inline_keyboard: [
-            [{ text: 'Следующий шаг', callback_data: 'write' }],
-            [{ text: 'Предыдущий шаг', callback_data: 'start' }]
+            [{ text: '⬅️ Предыдущий шаг', callback_data: 'start' },
+            { text: 'Следующий шаг ➡️', callback_data: 'write' }]
           ]
         }
       })
@@ -79,8 +79,8 @@ bot.on('callback_query', async (query) => {
       await bot.sendMessage(chatId, messageNego.write, {
         reply_markup: {
           inline_keyboard: [
-            [{ text: 'Следующий шаг', callback_data: 'dnttalk' }],
-            [{ text: 'Предыдущий шаг', callback_data: 'call' }]
+            [{ text: '⬅️ Предыдущий шаг', callback_data: 'call' },
+            { text: 'Следующий шаг ➡️', callback_data: 'dnttalk' }]
           ]
         }
       });
@@ -90,8 +90,8 @@ bot.on('callback_query', async (query) => {
       return await bot.sendMessage(chatId, messageNego.dnttalk, {
         reply_markup: {
           inline_keyboard: [
-            [{ text: 'Следующий шаг', callback_data: 'offer' }],
-            [{ text: 'Предыдущий шаг', callback_data: 'write' }]
+            [{ text: '⬅️ Предыдущий шаг', callback_data: 'write' },
+            { text: 'Следующий шаг ➡️', callback_data: 'offer' }]
           ]
         }
       })
@@ -101,8 +101,8 @@ bot.on('callback_query', async (query) => {
         reply_markup: {
           inline_keyboard: [
             [{ text: 'Поднятие рейтинга', callback_data: 'boost' }],
-            [{ text: 'Следующий шаг', callback_data: 'timer' }],
-            [{ text: 'Предыдущий шаг', callback_data: 'dnttalk' }]
+            [{ text: '⬅️ Предыдущий шаг', callback_data: 'dnttalk' },
+            { text: 'Следующий шаг ➡️', callback_data: 'timer' }]
           ]
         }
       })
@@ -114,8 +114,8 @@ bot.on('callback_query', async (query) => {
         parse_mode: 'Markdown',
         reply_markup: {
           inline_keyboard: [
-            [{ text: 'Следующий шаг', callback_data: 'timer' }],
-            [{ text: 'Предыдущий шаг', callback_data: 'offer' }]
+            [{ text: '⬅️ Предыдущий шаг', callback_data: 'offer' },
+            { text: 'Следующий шаг ➡️', callback_data: 'timer' }]
           ]
         }
       });
@@ -132,7 +132,7 @@ bot.on('callback_query', async (query) => {
             [{ text: 'Нормальный оффер', callback_data: 'normOffer' }],
             [{ text: 'Плохой оффер', callback_data: 'badOffer' }],
             [{ text: 'Нужен ответ в короткое время', callback_data: 'short' }],
-            [{ text: 'Предыдущий шаг', callback_data: 'offer' }]
+            [{ text: '⬅️ Предыдущий шаг', callback_data: 'offer' }]
           ]
         }
       })
@@ -167,8 +167,8 @@ bot.on('callback_query', async (query) => {
       return await bot.sendMessage(chatId, messageNego.goodOffer, {
         reply_markup: {
           inline_keyboard: [
-            [{ text: 'Следующий шаг', callback_data: 'think' }],
-            [{ text: 'Предыдущий шаг', callback_data: 'timer' }]
+            [{ text: '⬅️ Предыдущий шаг', callback_data: 'timer' },
+            { text: 'Следующий шаг ➡️', callback_data: 'think' }]
           ]
         }
       })
@@ -177,8 +177,8 @@ bot.on('callback_query', async (query) => {
       return await bot.sendMessage(chatId, messageNego.normOffer, {
         reply_markup: {
           inline_keyboard: [
-            [{ text: 'Следующий шаг', callback_data: 'think' }],
-            [{ text: 'Предыдущий шаг', callback_data: 'timer' }]
+            [{ text: '⬅️ Предыдущий шаг', callback_data: 'timer' },
+            { text: 'Следующий шаг ➡️', callback_data: 'think' }]
           ]
         }
       })
@@ -187,8 +187,8 @@ bot.on('callback_query', async (query) => {
       return await bot.sendMessage(chatId, messageNego.badOffer, {
         reply_markup: {
           inline_keyboard: [
-            [{ text: 'Следующий шаг', callback_data: 'dntAgree' }],
-            [{ text: 'Предыдущий шаг', callback_data: 'timer' }]
+            [{ text: '⬅️ Предыдущий шаг', callback_data: 'timer' },
+            { text: 'Следующий шаг ➡️', callback_data: 'dntAgree' }]
           ]
         }
       })
@@ -199,7 +199,7 @@ bot.on('callback_query', async (query) => {
           inline_keyboard: [
             [{ text: 'Согласиться на оффер', callback_data: 'accept' }],
             [{ text: 'Торгуемся', callback_data: 'tryAdd' }],
-            [{ text: 'Предыдущий шаг', callback_data: 'timer' }]
+            [{ text: '⬅️ Предыдущий шаг', callback_data: 'timer' }]
           ]
         }
       })
@@ -209,7 +209,7 @@ bot.on('callback_query', async (query) => {
         reply_markup: {
           inline_keyboard: [
             [{ text: 'Попытайся еще раз', callback_data: 'ansFrBdOff' }],
-            [{ text: 'Предыдущий шаг', callback_data: 'timer' }]
+            [{ text: '⬅️ Предыдущий шаг', callback_data: 'timer' }]
           ]
         }
       })
@@ -218,8 +218,8 @@ bot.on('callback_query', async (query) => {
       return await bot.sendMessage(chatId, messageNego.accept, {
         reply_markup: {
           inline_keyboard: [
-            [{ text: 'Следующий шаг', callback_data: 'start' }],
-            [{ text: 'Предыдущий шаг', callback_data: 'think' }]
+            [{ text: '⬅️ Предыдущий шаг', callback_data: 'think' },
+            { text: 'Следующий шаг ➡️', callback_data: 'start' }]
           ]
         }
       })
@@ -234,7 +234,7 @@ bot.on('callback_query', async (query) => {
         reply_markup: {
           inline_keyboard: [
             [{ text: 'Начнем с начала', callback_data: 'start' }],
-            [{ text: 'Предыдущий шаг', callback_data: 'think' }]
+            [{ text: '⬅️ Предыдущий шаг', callback_data: 'think' }]
           ]
         }
       })
@@ -247,7 +247,7 @@ bot.on('callback_query', async (query) => {
         reply_markup: {
           inline_keyboard: [
             [{ text: 'Начнем с начала', callback_data: 'start' }],
-            [{ text: 'Предыдущий шаг', callback_data: 'timer' }]
+            [{ text: '⬅️ Предыдущий шаг', callback_data: 'timer' }]
           ]
         }
       })
@@ -259,7 +259,7 @@ bot.on('callback_query', async (query) => {
           inline_keyboard: [
             [{ text: 'Резюме', callback_data: 'cv_public' }],
             [{ text: 'Холодные письма', callback_data: 'cold_letter' }],
-            [{ text: 'Предыдущий шаг', callback_data: 'start' }]
+            [{ text: '⬅️ Предыдущий шаг', callback_data: 'start' }]
           ]
         }
       })
@@ -271,7 +271,7 @@ bot.on('callback_query', async (query) => {
             [{ text: 'HR сама написала', callback_data: 'cv_works' }],
             [{ text: 'Вы сами откликнулись и получили сообщение', callback_data: 'kiss_hr' }],
             [{ text: 'Вы сами откликнулись и вас пригласили', callback_data: 'i_see_you' }],
-            [{ text: 'Предыдущий шаг', callback_data: 'offer_start' }]
+            [{ text: '⬅️ Предыдущий шаг', callback_data: 'offer_start' }]
           ]
         }
       })
@@ -280,7 +280,7 @@ bot.on('callback_query', async (query) => {
       return await bot.sendMessage(chatId, messageOffer.kiss_hr, {
         reply_markup: {
           inline_keyboard: [
-            [{ text: 'Предыдущий шаг', callback_data: 'cv_public' }]
+            [{ text: '⬅️ Предыдущий шаг', callback_data: 'cv_public' }]
           ]
         }
       })
@@ -291,9 +291,9 @@ bot.on('callback_query', async (query) => {
           inline_keyboard: [
             [{ text: 'ЗП не указана. На руках есть оффер', callback_data: 'money_with_offer' }],
             [{ text: 'ЗП не указана. У вас нет оффера', callback_data: 'money_wo_offer' }],
-            [{ text: 'Продоожаем общение', callback_data: 'want_to_talk' }],
+            [{ text: 'Продолжаем общение', callback_data: 'want_to_talk' }],
             [{ text: 'Отказаться от вакансии', callback_data: 'dont_want_to_talk' }],
-            [{ text: 'Предыдущий шаг', callback_data: 'cv_public' }]
+            [{ text: '⬅️ Предыдущий шаг', callback_data: 'cv_public' }]
           ]
         }
       })
@@ -304,9 +304,9 @@ bot.on('callback_query', async (query) => {
           inline_keyboard: [
             [{ text: 'ЗП не указана. На руках есть оффер', callback_data: 'money_with_offer' }],
             [{ text: 'ЗП не указана. У вас нет оффера', callback_data: 'money_wo_offer' }],
-            [{ text: 'Продоожаем общение', callback_data: 'want_to_talk' }],
+            [{ text: 'Продолжаем общение', callback_data: 'want_to_talk' }],
             [{ text: 'Отказаться от вакансии', callback_data: 'dont_want_to_talk' }],
-            [{ text: 'Предыдущий шаг', callback_data: 'cv_public' }]
+            [{ text: '⬅️ Предыдущий шаг', callback_data: 'cv_public' }]
           ]
         }
       })
@@ -315,7 +315,7 @@ bot.on('callback_query', async (query) => {
       return await bot.sendMessage(chatId, messageOffer.money_with_offer, {
         reply_markup: {
           inline_keyboard: [
-            [{ text: 'Предыдущий шаг', callback_data: 'cv_works' }]
+            [{ text: '⬅️ Предыдущий шаг', callback_data: 'cv_works' }]
           ]
         }
       })
@@ -324,7 +324,7 @@ bot.on('callback_query', async (query) => {
       return await bot.sendMessage(chatId, messageOffer.money_wo_offer, {
         reply_markup: {
           inline_keyboard: [
-            [{ text: 'Предыдущий шаг', callback_data: 'cv_works' }]
+            [{ text: '⬅️ Предыдущий шаг', callback_data: 'cv_works' }]
           ]
         }
       })
@@ -334,7 +334,7 @@ bot.on('callback_query', async (query) => {
         reply_markup: {
           inline_keyboard: [
             [{ text: 'Начнем с начала', callback_data: 'start' }],
-            [{ text: 'Предыдущий шаг', callback_data: 'cv_works' }]
+            [{ text: '⬅️ Предыдущий шаг', callback_data: 'cv_works' }]
           ]
         }
       })
@@ -344,8 +344,8 @@ bot.on('callback_query', async (query) => {
         parse_mode: 'Markdown',
         reply_markup: {
           inline_keyboard: [
-            [{ text: 'Следующий шаг', callback_data: 'questions' }],
-            [{ text: 'Предыдущий шаг', callback_data: 'cv_works' }]
+            [{ text: '⬅️ Предыдущий шаг', callback_data: 'cv_works' },
+            { text: 'Следующий шаг ➡️', callback_data: 'questions' }],
           ]
         }
       })
@@ -354,8 +354,8 @@ bot.on('callback_query', async (query) => {
       return await bot.sendMessage(chatId, messageOffer.questions, {
         reply_markup: {
           inline_keyboard: [
-            [{ text: 'Следующий шаг', callback_data: 'you_asking' }],
-            [{ text: 'Предыдущий шаг', callback_data: 'want_to_talk' }],
+            [{ text: '⬅️ Предыдущий шаг', callback_data: 'want_to_talk' },
+            { text: 'Следующий шаг ➡️', callback_data: 'you_asking' }]
           ]
         },
         parse_mode: 'Markdown',
@@ -368,7 +368,7 @@ bot.on('callback_query', async (query) => {
             [{ text: 'Рекрутер долго не дает ответ', callback_data: 'hr_is_missing' }],
             [{ text: 'Отказ', callback_data: 'hr_deny' }],
             [{ text: 'ОФФЕР!!!!!', callback_data: 'offerCV' }],
-            [{ text: 'Предыдущий шаг', callback_data: 'questions' }],
+            [{ text: '⬅️ Предыдущий шаг', callback_data: 'questions' }],
           ]
         }
       })
@@ -380,7 +380,7 @@ bot.on('callback_query', async (query) => {
             [{ text: 'Да, и вы очень хотите в эту компанию', callback_data: 'you_want_it_much' }],
             [{ text: 'Да, у вас есть оффер и вы торопитесь', callback_data: 'you_want_it_with_offer' }],
             [{ text: 'Да', callback_data: 'you_want_it' }],
-            [{ text: 'Предыдущий шаг', callback_data: 'you_asking' }],
+            [{ text: '⬅️ Предыдущий шаг', callback_data: 'you_asking' }],
           ]
         }
       })
@@ -389,7 +389,7 @@ bot.on('callback_query', async (query) => {
       return await bot.sendMessage(chatId, messageOffer.you_want_it, {
         reply_markup: {
           inline_keyboard: [
-            [{ text: 'Предыдущий шаг', callback_data: 'hr_is_missing' }],
+            [{ text: '⬅️ Предыдущий шаг', callback_data: 'hr_is_missing' }],
           ]
         }
       })
@@ -398,7 +398,7 @@ bot.on('callback_query', async (query) => {
       return await bot.sendMessage(chatId, messageOffer.you_want_it_with_offer, {
         reply_markup: {
           inline_keyboard: [
-            [{ text: 'Предыдущий шаг', callback_data: 'hr_is_missing' }],
+            [{ text: '⬅️ Предыдущий шаг', callback_data: 'hr_is_missing' }],
           ]
         }
       })
@@ -407,7 +407,7 @@ bot.on('callback_query', async (query) => {
       return await bot.sendMessage(chatId, messageOffer.you_want_it_much, {
         reply_markup: {
           inline_keyboard: [
-            [{ text: 'Предыдущий шаг', callback_data: 'hr_is_missing' }],
+            [{ text: '⬅️ Предыдущий шаг', callback_data: 'hr_is_missing' }],
           ]
         }
       })
@@ -418,7 +418,7 @@ bot.on('callback_query', async (query) => {
           inline_keyboard: [
             [{ text: 'Не расстраивайтесь! Поблагодарите  HR', callback_data: 'dont_you_cry' }],
             [{ text: 'Случилась взаимная любовь с HR', callback_data: 'you_love_her' }],
-            [{ text: 'Предыдущий шаг', callback_data: 'you_asking' }],
+            [{ text: '⬅️ Предыдущий шаг', callback_data: 'you_asking' }],
           ]
         }
       })
@@ -427,7 +427,7 @@ bot.on('callback_query', async (query) => {
       return await bot.sendMessage(chatId, messageOffer.dont_you_cry, {
         reply_markup: {
           inline_keyboard: [
-            [{ text: 'Предыдущий шаг', callback_data: 'hr_deny' }],
+            [{ text: '⬅️ Предыдущий шаг', callback_data: 'hr_deny' }],
           ]
         }
       })
@@ -436,7 +436,7 @@ bot.on('callback_query', async (query) => {
       return await bot.sendMessage(chatId, messageOffer.you_love_her, {
         reply_markup: {
           inline_keyboard: [
-            [{ text: 'Предыдущий шаг', callback_data: 'hr_deny' }],
+            [{ text: '⬅️ Предыдущий шаг', callback_data: 'hr_deny' }],
           ]
         }
       })
@@ -445,9 +445,9 @@ bot.on('callback_query', async (query) => {
       return await bot.sendMessage(chatId, messageOffer.offerCV, {
         reply_markup: {
           inline_keyboard: [
-            [{ text: 'Следующий шаг', callback_data: 'your_decision' }],
             [{ text: 'Написать коучу!', callback_data: 'coach' }],
-            [{ text: 'Предыдущий шаг', callback_data: 'you_asking' }],
+            [{ text: '⬅️ Предыдущий шаг', callback_data: 'you_asking' },
+            { text: 'Следующий шаг ➡️', callback_data: 'your_decision' }]
           ]
         }
       })
@@ -457,9 +457,9 @@ bot.on('callback_query', async (query) => {
         reply_markup: {
           inline_keyboard: [
             [{ text: 'Да', callback_data: 'answer_yes' }],
-            [{ text: 'Нет', callback_data: 'answer_no' }],
             [{ text: 'Да, но не устраивают условия', callback_data: 'tryAddCV' }],
-            [{ text: 'Предыдущий шаг', callback_data: 'offerCV' }],
+            [{ text: 'Нет', callback_data: 'answer_no' }],
+            [{ text: '⬅️ Предыдущий шаг', callback_data: 'offerCV' }],
           ]
         }
       })
@@ -469,7 +469,7 @@ bot.on('callback_query', async (query) => {
         reply_markup: {
           inline_keyboard: [
             [{ text: 'Начнем с начала', callback_data: 'start' }],
-            [{ text: 'Предыдущий шаг', callback_data: 'your_decision' }],
+            [{ text: '⬅️ Предыдущий шаг', callback_data: 'your_decision' }],
           ]
         }
       })
@@ -480,7 +480,7 @@ bot.on('callback_query', async (query) => {
           inline_keyboard: [
             [{ text: 'Отказ без объяснения причины', callback_data: 'no_explain' }],
             [{ text: 'Отказ с объяснением причины', callback_data: 'explain' }],
-            [{ text: 'Предыдущий шаг', callback_data: 'your_decision' }],
+            [{ text: '⬅️ Предыдущий шаг', callback_data: 'your_decision' }],
           ]
         }
       })
@@ -490,7 +490,7 @@ bot.on('callback_query', async (query) => {
         reply_markup: {
           inline_keyboard: [
             [{ text: 'Начнем с начала', callback_data: 'start' }],
-            [{ text: 'Предыдущий шаг', callback_data: 'answer_no' }],
+            [{ text: '⬅️ Предыдущий шаг', callback_data: 'answer_no' }],
           ]
         }
       })
@@ -500,7 +500,7 @@ bot.on('callback_query', async (query) => {
         reply_markup: {
           inline_keyboard: [
             [{ text: 'Начнем с начала', callback_data: 'start' }],
-            [{ text: 'Предыдущий шаг', callback_data: 'answer_no' }],
+            [{ text: '⬅️ Предыдущий шаг', callback_data: 'answer_no' }],
 
           ]
         }
@@ -511,7 +511,7 @@ bot.on('callback_query', async (query) => {
         reply_markup: {
           inline_keyboard: [
             [{ text: 'Начнем с начала', callback_data: 'start' }],
-            [{ text: 'Предыдущий шаг', callback_data: 'your_decision' }]
+            [{ text: '⬅️ Предыдущий шаг', callback_data: 'your_decision' }]
           ]
         }
       })
@@ -523,7 +523,7 @@ bot.on('callback_query', async (query) => {
             [{ text: 'LinkedIn', callback_data: 'cold_linked' }],
             [{ text: 'Telegram', callback_data: 'cold_telegram' }],
             [{ text: 'Кадровое агентство', callback_data: 'cold_agency' }],
-            [{ text: 'Предыдущий шаг', callback_data: 'offer_start' }]
+            [{ text: '⬅️ Предыдущий шаг', callback_data: 'offer_start' }]
           ]
         }
       })
@@ -533,7 +533,7 @@ bot.on('callback_query', async (query) => {
         reply_markup: {
           inline_keyboard: [
             [{ text: 'Договариваемся о собеседовании', callback_data: 'keep_talking' }],
-            [{ text: 'Предыдущий шаг', callback_data: 'cold_letter' }]
+            [{ text: '⬅️ Предыдущий шаг', callback_data: 'cold_letter' }]
           ]
         }
       })
@@ -543,7 +543,7 @@ bot.on('callback_query', async (query) => {
         reply_markup: {
           inline_keyboard: [
             [{ text: 'Договариваемся о собеседовании', callback_data: 'keep_talking' }],
-            [{ text: 'Предыдущий шаг', callback_data: 'cold_letter' }]
+            [{ text: '⬅️ Предыдущий шаг', callback_data: 'cold_letter' }]
           ]
         }
       })
@@ -553,7 +553,7 @@ bot.on('callback_query', async (query) => {
         reply_markup: {
           inline_keyboard: [
             [{ text: 'Договариваемся о собеседовании', callback_data: 'keep_talking' }],
-            [{ text: 'Предыдущий шаг', callback_data: 'cold_letter' }]
+            [{ text: '⬅️ Предыдущий шаг', callback_data: 'cold_letter' }]
           ]
         }
       })
@@ -562,8 +562,8 @@ bot.on('callback_query', async (query) => {
       return await bot.sendMessage(chatId, messageOffer.keep_talking, {
         reply_markup: {
           inline_keyboard: [
-            [{ text: 'Следующий шаг', callback_data: 'questionsCV' }],
-            [{ text: 'Предыдущий шаг', callback_data: 'cold_letter' }]
+            [{ text: '⬅️ Предыдущий шаг', callback_data: 'cold_letter' },
+            { text: 'Следующий шаг ➡️', callback_data: 'questionsCV' }]
           ]
         }, parse_mode: 'Markdown'
       })
@@ -574,8 +574,8 @@ bot.on('callback_query', async (query) => {
         parse_mode: 'Markdown',
         reply_markup: {
           inline_keyboard: [
-            [{ text: 'Следующий шаг', callback_data: 'you_asking' }],
-            [{ text: 'Предыдущий шаг', callback_data: 'keep_talking' }],
+            [{ text: '⬅️ Предыдущий шаг', callback_data: 'keep_talking' },
+            { text: 'Следующий шаг ➡️', callback_data: 'you_asking' }]
           ]
         }
       })
