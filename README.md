@@ -17,3 +17,7 @@
   <a href='https://t.me/hr_hire_helper_bot'>Ссылка на бота</a>
 </div>
 
+<div align="center">
+  <p>Проект задеплоен</p>
+</div>
+
