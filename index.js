@@ -225,7 +225,7 @@ bot.on('callback_query', async (query) => {
           reply_markup: {
             inline_keyboard: [
               [{ text: '⬅️ Предыдущий шаг', callback_data: 'think' },
-              { text: 'Следующий шаг ➡️', callback_data: 'start' }]
+              { text: 'Начнем с начало', callback_data: 'start' }]
             ]
           }
         })
