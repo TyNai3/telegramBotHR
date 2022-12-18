@@ -9,10 +9,10 @@ const token = '5952866056:AAFIG-h4IWP7co5TPKTlzUAepirmJdYpnGM';
 const bot = new TelegramBot(token, { polling: true });
 
 bot.setMyCommands([
-  {command: '/start', description:'В начало'}, 
-  {command: '/gif', description:'Рандомный кот'},
-  {command: '/pdf', description:'Скачать блок-схему'},
-  {command: '/coach', description:'Написать коучу'}
+  { command: '/start', description: 'В начало' },
+  { command: '/gif', description: 'Рандомный кот' },
+  { command: '/pdf', description: 'Скачать блок-схему' },
+  { command: '/coach', description: 'Написать коучу' }
 ])
 
 bot.on('message', async (msg) => {
@@ -22,29 +22,29 @@ bot.on('message', async (msg) => {
     await bot.sendMessage(chatId, messageNego.start, {
       reply_markup: {
         inline_keyboard: [
-          [{text: 'Переговоры', callback_data:'call'}],
-          [{text: 'Поиск работы', callback_data:'offer_start'}]
+          [{ text: 'Переговоры', callback_data: 'call' }],
+          [{ text: 'Поиск работы', callback_data: 'offer_start' }]
         ]
       }
     })
   }
-  if (text === '/gif'){
+  if (text === '/gif') {
     const res = await axios.get('https://api.giphy.com/v1/gifs/random?api_key=M1kIUJbwwhJv1QoPn4A4G2WR9JFHmHCq&tag=cat')
-      const path = res.data.data.images.downsized.url
-      return await bot.sendDocument(chatId, path, {
-        reply_markup: {
-          inline_keyboard: [
-            [{text: 'ещё', callback_data:'gif'}]
-          ]
-        }
-      })
-  }
-  if(text === '/pdf'){
-    await bot.sendDocument( chatId, './xxx.pdf', {
+    const path = res.data.data.images.downsized.url
+    return await bot.sendDocument(chatId, path, {
+      reply_markup: {
+        inline_keyboard: [
+          [{ text: 'ещё', callback_data: 'gif' }]
+        ]
+      }
     })
   }
-  if(text === '/coach'){
-    await bot.sendMessage( chatId, '@krutikovanad', {
+  if (text === '/pdf') {
+    await bot.sendDocument(chatId, './xxx.pdf', {
+    })
+  }
+  if (text === '/coach') {
+    await bot.sendMessage(chatId, '@krutikovanad', {
     })
   }
 });
@@ -408,7 +408,9 @@ bot.on('callback_query', async (query) => {
       })
     }
     case 'you_want_it': {
-      return await bot.sendMessage(chatId, messageOffer.you_want_it, {
+      await bot.sendMessage(chatId, messageOffer.you_want_it.discription, { parse_mode: 'Markdown' })
+      return await bot.sendMessage(chatId, messageOffer.you_want_it.helper, {
+        parse_mode: 'Markdown',
         reply_markup: {
           inline_keyboard: [
             [{ text: '⬅️ Предыдущий шаг', callback_data: 'hr_is_missing' }],
@@ -417,7 +419,9 @@ bot.on('callback_query', async (query) => {
       })
     }
     case 'you_want_it_with_offer': {
-      return await bot.sendMessage(chatId, messageOffer.you_want_it_with_offer, {
+      await bot.sendMessage(chatId, messageOffer.you_want_it_with_offer.discription, { parse_mode: 'Markdown' });
+      return await bot.sendMessage(chatId, messageOffer.you_want_it_with_offer.helper, {
+        parse_mode: 'Markdown',
         reply_markup: {
           inline_keyboard: [
             [{ text: '⬅️ Предыдущий шаг', callback_data: 'hr_is_missing' }],
@@ -426,7 +430,9 @@ bot.on('callback_query', async (query) => {
       })
     }
     case 'you_want_it_much': {
-      return await bot.sendMessage(chatId, messageOffer.you_want_it_much, {
+      await bot.sendMessage(chatId, messageOffer.you_want_it_much.discription, { parse_mode: 'Markdown' });
+      return await bot.sendMessage(chatId, messageOffer.you_want_it_much.helper, {
+        parse_mode: 'Markdown',
         reply_markup: {
           inline_keyboard: [
             [{ text: '⬅️ Предыдущий шаг', callback_data: 'hr_is_missing' }],
@@ -446,7 +452,10 @@ bot.on('callback_query', async (query) => {
       })
     }
     case 'dont_you_cry': {
-      return await bot.sendMessage(chatId, messageOffer.dont_you_cry, {
+      await bot.sendMessage(chatId, messageOffer.dont_you_cry.text,{ parse_mode: 'Markdown' });
+      await bot.sendMessage(chatId, messageOffer.dont_you_cry.discription,{ parse_mode: 'Markdown' });
+      return await bot.sendMessage(chatId, messageOffer.dont_you_cry.helper, {
+        parse_mode: 'Markdown',
         reply_markup: {
           inline_keyboard: [
             [{ text: '⬅️ Предыдущий шаг', callback_data: 'hr_deny' }],
@@ -455,7 +464,9 @@ bot.on('callback_query', async (query) => {
       })
     }
     case 'you_love_her': {
-      return await bot.sendMessage(chatId, messageOffer.you_love_her, {
+      await bot.sendMessage(chatId, messageOffer.you_love_her.discription, { parse_mode: 'Markdown' })
+      return await bot.sendMessage(chatId, messageOffer.you_love_her.helper, {
+        parse_mode: 'Markdown',
         reply_markup: {
           inline_keyboard: [
             [{ text: '⬅️ Предыдущий шаг', callback_data: 'hr_deny' }],
@@ -508,7 +519,9 @@ bot.on('callback_query', async (query) => {
       })
     }
     case 'no_explain': {
-      return await bot.sendMessage(chatId, messageOffer.no_explain, {
+      await bot.sendMessage(chatId, messageOffer.no_explain.discription,{ parse_mode: 'Markdown' });
+      return await bot.sendMessage(chatId, messageOffer.no_explain.helper, {
+        parse_mode: 'Markdown',
         reply_markup: {
           inline_keyboard: [
             [{ text: 'Начнем с начала', callback_data: 'start' }],
@@ -518,7 +531,9 @@ bot.on('callback_query', async (query) => {
       })
     }
     case 'explain': {
+      await bot.sendMessage(chatId, messageOffer.explain,{ parse_mode: 'Markdown' })
       return await bot.sendMessage(chatId, messageOffer.explain, {
+        parse_mode: 'Markdown',
         reply_markup: {
           inline_keyboard: [
             [{ text: 'Начнем с начала', callback_data: 'start' }],
@@ -528,6 +543,7 @@ bot.on('callback_query', async (query) => {
         }
       })
     }
+    //Проверить с блок-схемой
     case 'tryAddCV': {
       return await bot.sendMessage(chatId, messageNego.tryAdd, {
         reply_markup: {
