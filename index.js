@@ -293,6 +293,7 @@ bot.on('callback_query', async (query) => {
           parse_mode: 'Markdown',
           reply_markup: {
             inline_keyboard: [
+              [{ text: 'Начнем с начала', callback_data: 'start' }],
               [{ text: '⬅️ Предыдущий шаг', callback_data: 'cv_public' }]
             ]
           }
@@ -334,6 +335,7 @@ bot.on('callback_query', async (query) => {
           parse_mode: 'Markdown',
           reply_markup: {
             inline_keyboard: [
+              [{ text: 'Начнем с начала', callback_data: 'start' }],
               [{ text: '⬅️ Предыдущий шаг', callback_data: 'cv_works' }]
             ]
           }
@@ -346,6 +348,7 @@ bot.on('callback_query', async (query) => {
           parse_mode: 'Markdown',
           reply_markup: {
             inline_keyboard: [
+              [{ text: 'Начнем с начала', callback_data: 'start' }],
               [{ text: '⬅️ Предыдущий шаг', callback_data: 'cv_works' }]
             ]
           }
@@ -371,6 +374,7 @@ bot.on('callback_query', async (query) => {
           parse_mode: 'Markdown',
           reply_markup: {
             inline_keyboard: [
+              [{ text: 'Начнем с начала', callback_data: 'start' }],
               [{ text: '⬅️ Предыдущий шаг', callback_data: 'cv_works' }]
             ]
           }
@@ -420,7 +424,8 @@ bot.on('callback_query', async (query) => {
           parse_mode: 'Markdown',
           reply_markup: {
             inline_keyboard: [
-              [{ text: '⬅️ Предыдущий шаг', callback_data: 'hr_is_missing' }],
+              [{ text: 'Начнем с начала', callback_data: 'start' }],
+              [{ text: '⬅️ Предыдущий шаг', callback_data: 'hr_is_missing' }]
             ]
           }
         })
@@ -431,7 +436,8 @@ bot.on('callback_query', async (query) => {
           parse_mode: 'Markdown',
           reply_markup: {
             inline_keyboard: [
-              [{ text: '⬅️ Предыдущий шаг', callback_data: 'hr_is_missing' }],
+              [{ text: 'Начнем с начала', callback_data: 'start' }],
+              [{ text: '⬅️ Предыдущий шаг', callback_data: 'hr_is_missing' }]
             ]
           }
         })
@@ -442,7 +448,8 @@ bot.on('callback_query', async (query) => {
           parse_mode: 'Markdown',
           reply_markup: {
             inline_keyboard: [
-              [{ text: '⬅️ Предыдущий шаг', callback_data: 'hr_is_missing' }],
+              [{ text: 'Начнем с начала', callback_data: 'start' }],
+              [{ text: '⬅️ Предыдущий шаг', callback_data: 'hr_is_missing' }]
             ]
           }
         })
@@ -465,7 +472,8 @@ bot.on('callback_query', async (query) => {
           parse_mode: 'Markdown',
           reply_markup: {
             inline_keyboard: [
-              [{ text: '⬅️ Предыдущий шаг', callback_data: 'hr_deny' }],
+              [{ text: 'Начнем с начала', callback_data: 'start' }],
+              [{ text: '⬅️ Предыдущий шаг', callback_data: 'hr_deny' }]
             ]
           }
         })
@@ -477,7 +485,8 @@ bot.on('callback_query', async (query) => {
           parse_mode: 'Markdown',
           reply_markup: {
             inline_keyboard: [
-              [{ text: '⬅️ Предыдущий шаг', callback_data: 'hr_deny' }],
+              [{ text: 'Начнем с начала', callback_data: 'start' }],
+              [{ text: '⬅️ Предыдущий шаг', callback_data: 'hr_deny' }]
             ]
           }
         })
@@ -535,7 +544,8 @@ bot.on('callback_query', async (query) => {
           parse_mode: 'Markdown',
           reply_markup: {
             inline_keyboard: [
-              [{ text: '⬅️ Предыдущий шаг', callback_data: 'answer_no' }],
+              [{ text: 'Начнем с начала', callback_data: 'start' }],
+              [{ text: '⬅️ Предыдущий шаг', callback_data: 'answer_no' }]
             ]
           }
         })
@@ -546,7 +556,8 @@ bot.on('callback_query', async (query) => {
           parse_mode: 'Markdown',
           reply_markup: {
             inline_keyboard: [
-              [{ text: '⬅️ Предыдущий шаг', callback_data: 'answer_no' }],
+              [{ text: 'Начнем с начала', callback_data: 'start' }],
+              [{ text: '⬅️ Предыдущий шаг', callback_data: 'answer_no' }]
 
             ]
           }
@@ -562,6 +573,7 @@ bot.on('callback_query', async (query) => {
           parse_mode: 'Markdown',
           reply_markup: {
             inline_keyboard: [
+              [{ text: 'Начнем с начала', callback_data: 'start' }],
               [{ text: '⬅️ Предыдущий шаг', callback_data: 'your_decision' }]
             ]
           }
