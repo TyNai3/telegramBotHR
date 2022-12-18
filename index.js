@@ -58,9 +58,6 @@ bot.on('callback_query', async (query) => {
           inline_keyboard: [
             [{ text: 'Переговоры', callback_data: 'call' }],
             [{ text: 'Поиск работы', callback_data: 'offer_start' }],
-            [{ text: 'PDF', callback_data: 'pdf' }],
-            [{ text: 'Рандомный кот', callback_data: 'gif' }],
-            [{ text: 'Написать коучу', callback_data: 'coach' }]
           ]
         }
       })
@@ -152,8 +149,8 @@ bot.on('callback_query', async (query) => {
       return;
     }
     case 'shortDisagree': {
-      await bot.sendMessage(chatId, messageNego.short.text);
-      await bot.sendMessage(chatId, messageNego.short.discription, { parse_mode: 'Markdown' });
+      await bot.sendMessage(chatId, messageNego.shortDisagree.text);
+      await bot.sendMessage(chatId, messageNego.shortDisagree.discription, { parse_mode: 'Markdown' });
       return await bot.sendMessage(chatId, messageNego.shortDisagree.helper, {
         parse_mode: 'Markdown',
         reply_markup: {
@@ -464,7 +461,8 @@ bot.on('callback_query', async (query) => {
       })
     }
     case 'you_love_her': {
-      await bot.sendMessage(chatId, messageOffer.you_love_her.discription, { parse_mode: 'Markdown' })
+      await bot.sendMessage(chatId, messageOffer.you_love_her.text, { parse_mode: 'Markdown' });
+      await bot.sendMessage(chatId, messageOffer.you_love_her.discription, { parse_mode: 'Markdown' });
       return await bot.sendMessage(chatId, messageOffer.you_love_her.helper, {
         parse_mode: 'Markdown',
         reply_markup: {
